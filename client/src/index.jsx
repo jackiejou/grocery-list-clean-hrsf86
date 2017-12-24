@@ -24,14 +24,14 @@ class App extends React.Component {
   }
   handleAdd (event) {
     event.preventDefault();
-    if (this.state.itemsList.indexOf(this.state.value) >= 0) {
+    if (this.state.itemsList.indexOf(this.state.value.toLowerCase()) >= 0) {
       let arr = this.state.list.slice();
-      arr[this.state.itemsList.indexOf(this.state.value)].quantity += this.state.qty;
+      arr[this.state.itemsList.indexOf(this.state.value.toLowerCase())].quantity += this.state.qty;
       this.setState({list: arr, value: '', qty: 1});
     } else {
       let arr = this.state.itemsList.slice();
-      arr.push(this.state.value);
-      let obj = {quantity: this.state.qty, description: this.state.value};
+      arr.push(this.state.value.toLowerCase());
+      let obj = {quantity: this.state.qty, description: this.state.value.toLowerCase()};
       this.setState({
         list: this.state.list.concat([obj]),
         value: '',
